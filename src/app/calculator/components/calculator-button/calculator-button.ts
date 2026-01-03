@@ -8,7 +8,6 @@ import { Component, HostBinding, input, ViewEncapsulation } from '@angular/core'
   host: {
     class: 'w-1/4 border-r border-b border-indigo-400',
   },
-  encapsulation: ViewEncapsulation.None,
 })
 export class CalculatorButton {
   isCommand = input(false, {

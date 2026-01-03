@@ -4,5 +4,5 @@ button {
 }
 
 .isCommand {
-  @apply bg-indigo-700/20;
+  @apply bg-indigo-950/20;
 }
