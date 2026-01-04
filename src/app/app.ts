@@ -9,4 +9,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('zoneless-calculator-devtalles');
+  ngOnInit() {
+    console.log('App component initialized version: 1.0.0');
+  }
 }

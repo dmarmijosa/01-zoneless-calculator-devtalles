@@ -1,4 +1,12 @@
-import { Component, HostBinding, input, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostBinding,
+  input,
+  output,
+  viewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'calculator-button',
@@ -10,6 +18,8 @@ import { Component, HostBinding, input, ViewEncapsulation } from '@angular/core'
   },
 })
 export class CalculatorButton {
+  onClick = output<string>();
+  public contentValue = viewChild<ElementRef<HTMLButtonElement>>('button');
   isCommand = input(false, {
     transform: (value: boolean | string) => (typeof value === 'string' ? value === '' : value),
   });
@@ -26,5 +36,13 @@ export class CalculatorButton {
   @HostBinding('class.w-2/4')
   get isDoubleSizeClass() {
     return this.isDoubleSize();
+  }
+
+  handleClick() {
+    if (!this.contentValue()!?.nativeElement) return;
+
+    const value = this.contentValue()!.nativeElement.innerText;
+    console.log(value);
+    this.onClick.emit(value.trim());
   }
 }
